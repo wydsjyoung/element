@@ -17,7 +17,7 @@
     <div class="el-progress-bar" v-if="type === 'line'">
       <div class="el-progress-bar__outer" :style="{height: strokeWidth + 'px'}">
         <div class="el-progress-bar__inner" :style="barStyle">
-          <div class="el-progress-bar__innerText" v-if="showText && textInside">{{percentage}}%</div>
+          <div class="el-progress-bar__innerText" v-if="showText && textInside">{{percentage}}{{unit}}</div>
         </div>
       </div>
     </div>
@@ -32,7 +32,7 @@
       v-if="showText && !textInside"
       :style="{fontSize: progressTextSize + 'px'}"
     >
-      <template v-if="!status">{{percentage}}%</template>
+      <template v-if="!status">{{percentage}}{{unit}}</template>
       <i v-else :class="iconClass"></i>
     </div>
   </div>
@@ -70,6 +70,10 @@
       showText: {
         type: Boolean,
         default: true
+      },
+      unit: {
+        type: String,
+        default: '%'
       }
     },
     computed: {
